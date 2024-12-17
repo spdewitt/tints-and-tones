@@ -128,9 +128,9 @@ export default function HomePage() {
 
         {/* About Rich Bennett */}
         <section className="mx-auto mt-10 max-w-4xl rounded-lg bg-blue-50 p-6">
-          <h2 className="mb-4 text-2xl font-semibold">
+          <h3 className="mb-4 text-2xl font-semibold">
             Meet Rich Bennett, Your Evansville-Area Painting Expert
-          </h2>
+          </h3>
           <p className="mb-6 leading-relaxed text-gray-700">
             Rich Bennett is a current college professor of cell
             biology and has used his years as a professor to earn

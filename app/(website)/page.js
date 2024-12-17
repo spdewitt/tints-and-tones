@@ -2,9 +2,10 @@ import HomePage from "./home";
 import { getAllPosts } from "@/lib/sanity/client";
 
 export const metadata = {
-  title: "Tints and Tones Painting | Evansville Residential Painter",
+  title:
+    "Affordable Residential Interior and Exterior Painting in Evansville",
   description:
-    "Professional residential painting services in Evansville, Indiana. Interior and exterior painting, cabinet staining, fine art commissions, and more.",
+    "Transform your home or property with trusted and affordable interior & exterior painting and fine art commissions in Evansville, Newburgh, and more.",
   keywords: [
     "Evansville painter",
     "residential painting",

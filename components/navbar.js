@@ -57,7 +57,7 @@ export default function Navbar(props) {
                     height={50}
                   />
                 </Link>
-
+                <div className="phoneNumber">(812) 604-9289</div>
                 {/* Mobile Toggle Button */}
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 md:hidden">
                   <span className="sr-only">Open main menu</span>
