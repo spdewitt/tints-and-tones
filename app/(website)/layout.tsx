@@ -10,14 +10,10 @@ async function sharedMetaData(params) {
     // enable this for resolving opengraph image
     // metadataBase: new URL(settings.url),
     title: {
-      default:
-        settings?.title ||
-        "Stablo - Blog Template for Next.js & Sanity CMS",
-      template: "%s | Stablo"
+      default: settings?.title,
+      template: "%s"
     },
-    description:
-      settings?.description ||
-      "Stablo - popular open-source next.js and sanity blog template",
+    description: settings?.description,
     keywords: ["Next.js", "Sanity", "Tailwind CSS"],
     authors: [{ name: "Surjith" }],
     canonical: settings?.url,
@@ -31,10 +27,6 @@ async function sharedMetaData(params) {
           height: 600
         }
       ]
-    },
-    twitter: {
-      title: settings?.title || "Stablo Template",
-      card: "summary_large_image"
     },
     robots: {
       index: true,

@@ -37,17 +37,12 @@ export default function Layout(props) {
           ],
           site_name: props.title
         }}
-        twitter={{
-          handle: "@surjithctly",
-          site: "@surjithctly",
-          cardType: "summary_large_image"
-        }}
       />
 
       <div
         className={cx(
           props?.fontStyle,
-          "antialiased text-gray-800 dark:bg-black dark:text-gray-400"
+          "text-gray-800 antialiased dark:bg-black dark:text-gray-400"
         )}>
         {props.alternate ? (
           <NavbarAlt {...props} />

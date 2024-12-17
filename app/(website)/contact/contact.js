@@ -45,164 +45,191 @@ export default function Contact({ settings }) {
 
   return (
     <Container>
-      <h1 className="mt-2 mb-3 text-3xl font-semibold tracking-tight text-center lg:leading-snug text-brand-primary lg:text-4xl dark:text-white">
-        Contact
-      </h1>
-      <div className="text-center">
-        <p className="text-lg">We are a here to help.</p>
-      </div>
-
-      <div className="grid my-10 md:grid-cols-2">
-        <div className="my-10">
-          <h2 className="text-2xl font-semibold dark:text-white">
-            Contact Stablo
-          </h2>
-          <p className="max-w-sm mt-5">
-            Have something to say? We are here to help. Fill up the
-            form or send email or call phone.
-          </p>
-
-          <div className="mt-5">
-            <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">
-              <MapPinIcon className="w-4 h-4" />
-              <span>1734 Sanfransico, CA 93063</span>
-            </div>
-            {settings?.email && (
-              <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">
-                <EnvelopeIcon className="w-4 h-4" />
-                <a href={`mailto:${settings.email}`}>
-                  {settings.email}
-                </a>
-              </div>
-            )}
-            {settings?.phone && (
-              <div className="flex items-center mt-2 space-x-2 text-dark-600 dark:text-gray-400">
-                <PhoneIcon className="w-4 h-4" />
-                <a href={`tel:${settings.phone}`}>{settings.phone}</a>
-              </div>
-            )}
-          </div>
-        </div>
-        <div>
-          <form onSubmit={handleSubmit(onSubmit)} className="my-10">
+      <div
+        id="contact-form"
+        className="mt-4 rounded-lg border border-gray-200 p-6 shadow-sm">
+        <h3 className="mb-4 text-xl font-semibold text-gray-800">
+          Get in Touch with Rich
+        </h3>
+        <p className="mb-6 text-gray-700">
+          Have a question, want a free quote, or ready to start your
+          next project? Fill out the form below and Rich will get back
+          to you soon.
+        </p>
+        <form
+          action="/api/contact"
+          method="POST"
+          className="space-y-4">
+          {/* Name */}
+          <div>
+            <label
+              htmlFor="name"
+              className="mb-2 block font-medium text-gray-700">
+              Name
+            </label>
             <input
-              type="checkbox"
-              id=""
-              className="hidden"
-              style={{ display: "none" }}
-              {...register("botcheck")}></input>
+              type="text"
+              id="name"
+              name="name"
+              required
+              className="w-full rounded border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
+            />
+          </div>
 
-            <div className="mb-5">
+          {/* Email */}
+          <div>
+            <label
+              htmlFor="email"
+              className="mb-2 block font-medium text-gray-700">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              className="w-full rounded border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
+            />
+          </div>
+
+          {/* Phone Number */}
+          <div>
+            <label
+              htmlFor="phone"
+              className="mb-2 block font-medium text-gray-700">
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              required
+              className="w-full rounded border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
+            />
+          </div>
+
+          {/* Preferred Method of Contact */}
+          <div>
+            <span className="mb-2 block font-medium text-gray-700">
+              Preferred Method of Contact
+            </span>
+            <div className="mb-2 flex items-center">
               <input
-                type="text"
-                placeholder="Full Name"
-                autoComplete="false"
-                className={`w-full px-4 py-3 border-2 placeholder:text-gray-800 dark:text-white rounded-md outline-none dark:placeholder:text-gray-200 dark:bg-gray-900   focus:ring-4  ${
-                  errors.name
-                    ? "border-red-600 focus:border-red-600 ring-red-100 dark:ring-0"
-                    : "border-gray-300 focus:border-gray-600 ring-gray-100 dark:border-gray-600 dark:focus:border-white dark:ring-0"
-                }`}
-                {...register("name", {
-                  required: "Full name is required",
-                  maxLength: 80
-                })}
+                type="radio"
+                id="contactEmail"
+                name="preferredContact"
+                value="Email"
+                required
+                className="mr-2"
               />
-              {errors.name && (
-                <div className="mt-1 text-red-600">
-                  <small>{errors.name.message}</small>
-                </div>
-              )}
+              <label htmlFor="contactEmail">Email</label>
             </div>
+            <div className="mb-2 flex items-center">
+              <input
+                type="radio"
+                id="contactCall"
+                name="preferredContact"
+                value="Call"
+                className="mr-2"
+              />
+              <label htmlFor="contactCall">Call</label>
+            </div>
+            <div className="mb-2 flex items-center">
+              <input
+                type="radio"
+                id="contactText"
+                name="preferredContact"
+                value="Text"
+                className="mr-2"
+              />
+              <label htmlFor="contactText">Text</label>
+            </div>
+          </div>
 
-            <div className="mb-5">
-              <label htmlFor="email_address" className="sr-only">
-                Email Address
+          {/* Services Interested In */}
+          <div>
+            <span className="mb-2 block font-medium text-gray-700">
+              Which services are you interested in?
+            </span>
+            <div className="mb-2 flex items-center">
+              <input
+                type="checkbox"
+                id="interior"
+                name="services"
+                value="Interior Painting & Cabinet Staining"
+                className="mr-2"
+              />
+              <label htmlFor="interior">
+                Interior Painting & Cabinet Staining
               </label>
+            </div>
+            <div className="mb-2 flex items-center">
               <input
-                id="email_address"
-                type="email"
-                placeholder="Email Address"
-                name="email"
-                autoComplete="false"
-                className={`w-full px-4 py-3 border-2 placeholder:text-gray-800 dark:text-white rounded-md outline-none dark:placeholder:text-gray-200 dark:bg-gray-900   focus:ring-4  ${
-                  errors.email
-                    ? "border-red-600 focus:border-red-600 ring-red-100 dark:ring-0"
-                    : "border-gray-300 focus:border-gray-600 ring-gray-100 dark:border-gray-600 dark:focus:border-white dark:ring-0"
-                }`}
-                {...register("email", {
-                  required: "Enter your email",
-                  pattern: {
-                    value: /^\S+@\S+$/i,
-                    message: "Please enter a valid email"
-                  }
-                })}
+                type="checkbox"
+                id="exterior"
+                name="services"
+                value="Exterior Painting & Fence Staining"
+                className="mr-2"
               />
-              {errors.email && (
-                <div className="mt-1 text-red-600">
-                  <small>{errors.email.message}</small>
-                </div>
-              )}
+              <label htmlFor="exterior">
+                Exterior Painting & Fence Staining
+              </label>
             </div>
-
-            <div className="mb-3">
-              <textarea
-                name="message"
-                placeholder="Your Message"
-                className={`w-full px-4 py-3 border-2 placeholder:text-gray-800 dark:text-white dark:placeholder:text-gray-200 dark:bg-gray-900   rounded-md outline-none  h-36 focus:ring-4  ${
-                  errors.message
-                    ? "border-red-600 focus:border-red-600 ring-red-100 dark:ring-0"
-                    : "border-gray-300 focus:border-gray-600 ring-gray-100 dark:border-gray-600 dark:focus:border-white dark:ring-0"
-                }`}
-                {...register("message", {
-                  required: "Enter your Message"
-                })}
+            <div className="mb-2 flex items-center">
+              <input
+                type="checkbox"
+                id="murals"
+                name="services"
+                value="Custom Murals & Artistic Finishes"
+                className="mr-2"
               />
-              {errors.message && (
-                <div className="mt-1 text-red-600">
-                  {" "}
-                  <small>{errors.message.message}</small>
-                </div>
-              )}
+              <label htmlFor="murals">
+                Custom Murals & Artistic Finishes
+              </label>
             </div>
+            <div className="mb-2 flex items-center">
+              <input
+                type="checkbox"
+                id="fineArt"
+                name="services"
+                value="Fine Art Commissions"
+                className="mr-2"
+              />
+              <label htmlFor="fineArt">Fine Art Commissions</label>
+            </div>
+            <div className="mb-2 flex items-center">
+              <input
+                type="checkbox"
+                id="other"
+                name="services"
+                value="Other"
+                className="mr-2"
+              />
+              <label htmlFor="other">Other</label>
+            </div>
+          </div>
 
-            <button
-              type="submit"
-              className="w-full py-4 font-semibold text-white transition-colors bg-gray-900 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-offset-2 focus:ring focus:ring-gray-200 px-7 dark:bg-white dark:text-black ">
-              {isSubmitting ? (
-                <svg
-                  className="w-5 h-5 mx-auto text-white dark:text-black animate-spin"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24">
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-              ) : (
-                "Send Message"
-              )}
-            </button>
-          </form>
+          {/* Message */}
+          <div>
+            <label
+              htmlFor="message"
+              className="mb-2 block font-medium text-gray-700">
+              Describe Your Project or Ask a Question
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              required
+              className="w-full rounded border border-gray-300 p-2 focus:border-blue-500 focus:outline-none"></textarea>
+          </div>
 
-          {isSubmitSuccessful && isSuccess && (
-            <div className="mt-3 text-sm text-center text-green-500">
-              {message || "Success. Message sent successfully"}
-            </div>
-          )}
-          {isSubmitSuccessful && !isSuccess && (
-            <div className="mt-3 text-sm text-center text-red-500">
-              {message || "Something went wrong. Please try later."}
-            </div>
-          )}
-        </div>
+          <button
+            type="submit"
+            className="rounded bg-blue-600 px-6 py-3 text-white transition hover:bg-blue-700">
+            Send Message
+          </button>
+        </form>
       </div>
     </Container>
   );
