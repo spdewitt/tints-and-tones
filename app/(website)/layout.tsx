@@ -15,7 +15,7 @@ async function sharedMetaData(params) {
     },
     description: settings?.description,
     keywords: ["Next.js", "Sanity", "Tailwind CSS"],
-    authors: [{ name: "Surjith" }],
+    authors: [{ name: "Shawn" }],
     canonical: settings?.url,
     openGraph: {
       images: [

@@ -1,4 +1,5 @@
-import { getAllAuthors, getSettings } from "@/lib/sanity/client";
+import { sanityClient } from "@/lib/sanity.client";
+import { fineArtsQuery } from "@/lib/queries";
 import FineArt from "./fine-art";
 
 export const metadata = {
@@ -22,8 +23,7 @@ export const metadata = {
 // If you need ISR (Incremental Static Regeneration):
 // export const revalidate = 60;
 
-export default async function FineArtPage() {
-  const authors = await getAllAuthors();
-  const settings = await getSettings();
-  return <FineArt settings={settings} authors={authors} />;
+export default async function Page() {
+  const data = await sanityClient.fetch(fineArtsQuery);
+  return <FineArt data={data} />;
 }

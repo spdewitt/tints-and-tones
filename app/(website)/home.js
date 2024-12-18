@@ -1,5 +1,3 @@
-"use client";
-
 import Head from "next/head";
 import Link from "next/link";
 import Container from "@/components/container";
@@ -28,7 +26,39 @@ export default function HomePage({ data }) {
     propertyManagersTitle,
     propertyManagersDescription
   } = data;
-
+  const schemaOrg = {
+    "@context": "https://schema.org",
+    "@type": "HousePainter",
+    name: "Tints and Tones Painting",
+    description:
+      "Affordable, professional interior and exterior painting, cabinet staining, and fine art commissions in Evansville, Indiana.",
+    image: "https://www.tintsandtonespainting.com/img/rich.jpg",
+    url: "https://www.tintsandtonespainting.com/",
+    telephone: "(812)604-9289",
+    priceRange: "$$",
+    // address: {
+    //   "@type": "PostalAddress",
+    //   streetAddress: "1234 West Side Blvd",
+    //   addressLocality: "Evansville",
+    //   addressRegion: "IN",
+    //   postalCode: "47712",
+    //   addressCountry: "US"
+    // },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "37.9716",
+      longitude: "-87.5711"
+    },
+    areaServed: {
+      "@type": "Place",
+      name: "Evansville and Surrounding Southern Indiana Communities"
+    },
+    openingHours: ["Mo-Fr 08:00-17:00", "Sa 09:00-14:00"],
+    sameAs: [
+      "https://www.facebook.com/TintsandTonesPainting",
+      "https://www.instagram.com/TintsandTonesPainting"
+    ]
+  };
   return (
     <>
       <Head>
@@ -49,6 +79,14 @@ export default function HomePage({ data }) {
         />
       </Head>
 
+      <section>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schemaOrg)
+          }}
+        />
+      </section>
       <Container>
         {/* Hero Section */}
         <section className="mt-2 flex flex-col items-center text-center">

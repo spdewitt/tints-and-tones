@@ -3,6 +3,8 @@ import { getAllPosts } from "@/lib/sanity/client";
 import { sanityClient } from "@/lib/sanity.client";
 import { homePageQuery } from "@/lib/queries";
 
+// If you need ISR (Incremental Static Regeneration):
+// export const revalidate = 60;
 export const metadata = {
   title: "Residential Interior and Exterior Painting in Evansville",
   description:
@@ -19,10 +21,6 @@ export const metadata = {
     canonical: "https://www.tintsandtonespainting.com/"
   }
 };
-
-// If you need ISR (Incremental Static Regeneration):
-// export const revalidate = 60;
-
 export default async function Page() {
   const data = await sanityClient.fetch(homePageQuery);
   return <HomePage data={data} />;
