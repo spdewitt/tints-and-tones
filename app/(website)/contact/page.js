@@ -5,7 +5,7 @@ export const metadata = {
   title:
     "Contact Tints and Tones Painting | Evansville Residential Painter",
   description:
-    "Get in touch with Rich Bennett at Tints and Tones Painting. Schedule a consultation or request a free quote for professional residential painting, staining, and fine art services in Evansville.",
+    "Get in touch with Rich Bennett at Tints and Tones Painting. Schedule a consultation or request a free quote.",
   keywords: [
     "contact",
     "Evansville painter",

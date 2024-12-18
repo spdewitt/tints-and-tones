@@ -1,4 +1,5 @@
-import { getAllAuthors, getSettings } from "@/lib/sanity/client";
+import { sanityClient } from "@/lib/sanity.client";
+import { exteriorPaintingQuery } from "@/lib/queries";
 import ExteriorPainting from "./exterior-painting";
 
 export const metadata = {
@@ -16,11 +17,7 @@ export const metadata = {
   }
 };
 
-// If you need ISR (Incremental Static Regeneration), you can uncomment this:
-// export const revalidate = 60;
-
 export default async function ExteriorPaintingPage() {
-  const authors = await getAllAuthors();
-  const settings = await getSettings();
-  return <ExteriorPainting settings={settings} authors={authors} />;
+  const data = await sanityClient.fetch(exteriorPaintingQuery);
+  return <ExteriorPainting data={data} />;
 }

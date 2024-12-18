@@ -1,5 +1,7 @@
 import { getAllAuthors, getSettings } from "@/lib/sanity/client";
+import { interiorPaintingQuery } from "@/lib/queries";
 import InteriorPainting from "./interior-painting";
+import { sanityClient } from "@/lib/sanity.client";
 
 export const metadata = {
   title: "Professional Interior Residential Painting and Staining",
@@ -22,7 +24,6 @@ export const metadata = {
 // export const revalidate = 60;
 
 export default async function InteriorPaintingPage() {
-  const authors = await getAllAuthors();
-  const settings = await getSettings();
-  return <InteriorPainting settings={settings} authors={authors} />;
+  const data = await sanityClient.fetch(interiorPaintingQuery);
+  return <InteriorPainting data={data} />;
 }

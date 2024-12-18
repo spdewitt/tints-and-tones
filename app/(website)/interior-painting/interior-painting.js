@@ -1,73 +1,34 @@
-"use client";
+"use client"; // Needed if you rely on the Tab UI client-side interactivity
 
 import Container from "@/components/container";
 import Image from "next/image";
 import { Tab } from "@headlessui/react";
-import before1 from "../../../public/img/before1.webp";
-import before2 from "../../../public/img/before2.webp";
-import before3 from "../../../public/img/before3.webp";
-import before4 from "../../../public/img/before4.webp";
-import after1 from "../../../public/img/after4.webp";
-import after2 from "../../../public/img/after3.webp";
-import after3 from "../../../public/img/after2.webp";
-import after4 from "../../../public/img/after1.webp";
-import cabinetStaining from "../../../public/img/cabinetStaining.webp";
 
-const pairs = [
-  {
-    beforeImg: before1,
-    afterImg: after1,
-    beforeText:
-      "Low Quality Paint Does Not Cover Previous Color in Two Coats.",
-    afterText:
-      "High Quality Paint leaves a smooth finish in two coats."
-  },
-  {
-    beforeImg: before2,
-    afterImg: after2,
-    beforeText:
-      "Switch Cover Not Removed When Painted Previously, White Trim Paint on Walls, Outlet Cover Not Removed.",
-    afterText: "Clean cutting makes the window and trim pop."
-  },
-  {
-    beforeImg: before3,
-    afterImg: after3,
-    beforeText:
-      "Poor Cutting, Outlet Covers Not Removed when Painted",
-    afterText:
-      "The correct paint color on the correct surface, every time."
-  },
-  {
-    beforeImg: before4,
-    afterImg: after4,
-    beforeText:
-      "Poor Paint Quality is noticeable, especially cutting in.",
-    afterText: "Proper Paint and Technique make a huge difference."
-  }
-];
+export default function InteriorPainting({ data }) {
+  const { title, introParagraph, pairs, cabinetStainingSection } =
+    data;
 
-export default function InteriorPainting() {
   return (
     <Container className="mx-auto max-w-screen-lg px-4">
       <h1 className="text-brand-primary mb-8 mt-2 text-center text-3xl font-semibold tracking-tight dark:text-white lg:text-4xl lg:leading-snug">
-        Interior Residential Painting and Staining
+        {title}
       </h1>
+
       <p className="mb-8 text-base leading-relaxed text-gray-700">
-        Rich offers professional, affordable interior residential
-        painting that can bring new life to your home. While he would
-        love to be painting an intricate mural on your wall, he also
-        takes enormous pride in the way a well-executed, professional
-        coat of paint can instantly elevate a room’s atmosphere.
+        {introParagraph}
       </p>
+
       <div className="grid grid-cols-12 gap-6">
         {pairs.map((pair, index) => (
           <div key={index} className="col-span-12">
-            {/* On large screens show both images side by side */}
+            {/* Desktop layout: side by side images */}
             <div className="hidden lg:flex lg:space-x-4">
               <div className="flex-1">
                 <Image
-                  src={pair.beforeImg}
+                  src={pair.beforeImage.asset.url}
                   alt={`Before image ${index + 1}`}
+                  width={800}
+                  height={600}
                   className="h-auto w-full rounded"
                 />
                 <p className="mt-2 text-center text-sm text-gray-700">
@@ -76,8 +37,10 @@ export default function InteriorPainting() {
               </div>
               <div className="flex-1">
                 <Image
-                  src={pair.afterImg}
+                  src={pair.afterImage.asset.url}
                   alt={`After image ${index + 1}`}
+                  width={800}
+                  height={600}
                   className="h-auto w-full rounded"
                 />
                 <p className="mt-2 text-center text-sm text-gray-700">
@@ -86,7 +49,7 @@ export default function InteriorPainting() {
               </div>
             </div>
 
-            {/* On mobile use tabs to switch between before/after */}
+            {/* Mobile layout: Tabs to switch between before/after */}
             <div className="lg:hidden">
               <Tab.Group>
                 <Tab.List className="flex space-x-1 rounded bg-gray-100 p-1">
@@ -114,8 +77,10 @@ export default function InteriorPainting() {
                 <Tab.Panels className="mt-4">
                   <Tab.Panel>
                     <Image
-                      src={pair.beforeImg}
+                      src={pair.beforeImage.asset.url}
                       alt={`Before image ${index + 1}`}
+                      width={800}
+                      height={600}
                       className="h-auto w-full rounded"
                     />
                     <p className="mt-2 text-center text-sm text-gray-700">
@@ -124,8 +89,10 @@ export default function InteriorPainting() {
                   </Tab.Panel>
                   <Tab.Panel>
                     <Image
-                      src={pair.afterImg}
+                      src={pair.afterImage.asset.url}
                       alt={`After image ${index + 1}`}
+                      width={800}
+                      height={600}
                       className="h-auto w-full rounded"
                     />
                     <p className="mt-2 text-center text-sm text-gray-700">
@@ -141,24 +108,16 @@ export default function InteriorPainting() {
 
       <section className="mt-10 rounded-lg bg-blue-50 p-6">
         <h2 className="mb-4 text-center text-2xl font-semibold text-blue-600">
-          Cabinet Staining Services
+          {cabinetStainingSection.title}
         </h2>
         <p className="mx-auto max-w-3xl text-base leading-relaxed text-gray-700">
-          In addition to offering top-quality interior painting, Rich
-          Bennett also specializes in cabinet staining—an ideal
-          solution for homeowners looking to refresh the heart of
-          their home without a full kitchen remodel. By carefully
-          stripping, preparing, and staining your cabinets, Rich
-          transforms dull or worn surfaces into elegant, durable
-          finishes that complement your décor. Experience how a
-          professionally stained cabinet can brighten your kitchen,
-          enhance the value of your home, and harmonize with any
-          interior style, all while reflecting the artistry and
-          meticulous craftsmanship that Rich brings to every project.
+          {cabinetStainingSection.description}
         </p>
         <Image
-          src={cabinetStaining}
-          alt={`Evansville Cabinet Staining Can Update your Kitchen`}
+          src={cabinetStainingSection.image.asset.url}
+          alt="Evansville Cabinet Staining"
+          width={800}
+          height={600}
           className="h-auto w-full rounded"
         />
       </section>

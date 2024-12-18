@@ -1,10 +1,11 @@
-import { getAllAuthors, getSettings } from "@/lib/sanity/client";
-import About from "./about";
+import { sanityClient } from "@/lib/sanity.client";
+import { aboutPageQuery } from "@/lib/queries";
+import About from "./about"; // The component file you showed
 
 export const metadata = {
   title: "About Tints and Tones Painting and Rich Bennett",
   description:
-    "Learn about Tints and Tones Painting and Rich Bennett, an academically-trained fine artist and experienced painter offering professional interior and exterior painting, cabinet staining, and more in Evansville, Indiana.",
+    "Learn about Tints and Tones Painting and Rich Bennett, an experienced painter offering professional interior and exterior painting.",
   keywords: [
     "Rich Bennett",
     "Tints and Tones Painting",
@@ -22,7 +23,6 @@ export const metadata = {
 // export const revalidate = 60;
 
 export default async function AboutPage() {
-  const authors = await getAllAuthors();
-  const settings = await getSettings();
-  return <About settings={settings} authors={authors} />;
+  const data = await sanityClient.fetch(aboutPageQuery);
+  return <About data={data} />;
 }

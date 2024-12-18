@@ -48,9 +48,9 @@ export default function Contact({ settings }) {
       <div
         id="contact-form"
         className="mt-4 rounded-lg border border-gray-200 p-6 shadow-sm">
-        <h3 className="mb-4 text-xl font-semibold text-gray-800">
+        <h1 className="mb-4 text-xl font-semibold text-gray-800">
           Get in Touch with Rich
-        </h3>
+        </h1>
         <p className="mb-6 text-gray-700">
           Have a question, want a free quote, or ready to start your
           next project? Fill out the form below and Rich will get back
