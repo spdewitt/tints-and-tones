@@ -42,22 +42,28 @@ export default function Navbar(props) {
   const mobilemenu = [...leftmenu];
 
   return (
-    <Container>
+    <Container className="homeContainer">
       <nav>
         <Disclosure>
           {({ open }) => (
             <>
               <div className="flex items-center justify-between">
                 {/* Logo or Branding */}
-                <Link href="/">
-                  <Image
-                    src={logo}
-                    alt="Logo"
-                    width={50}
-                    height={50}
-                  />
-                </Link>
-                <div className="phoneNumber">(812) 604-9289</div>
+                <div className="flex items-center">
+                  <Link href="/">
+                    <Image
+                      src={logo}
+                      alt="Logo"
+                      width={50}
+                      height={50}
+                    />
+                  </Link>
+                  <div className="ml-4 text-sm text-gray-600 dark:text-gray-400 md:block">
+                    (812) 604-9289
+                    <br />
+                    tintsandtonespainting@gmail.com
+                  </div>
+                </div>
                 {/* Mobile Toggle Button */}
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 md:hidden">
                   <span className="sr-only">Open main menu</span>
@@ -79,7 +85,7 @@ export default function Navbar(props) {
                 </Disclosure.Button>
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex md:items-center md:space-x-6">
+                <div className="hidden md:flex md:items-center md:space-x-1">
                   {leftmenu.map((item, index) => (
                     <Link
                       href={item.href}

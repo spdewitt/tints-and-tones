@@ -89,6 +89,9 @@ export default function HomePage({ data }) {
       </section>
       <Container>
         {/* Hero Section */}
+        <span className="text-xl font-bold">
+          Tints & Tones Painting
+        </span>
         <section className="mt-2 flex flex-col items-center text-center">
           <HeroSlider />
 
@@ -102,7 +105,6 @@ export default function HomePage({ data }) {
             {heroButtonText}
           </Link>
         </section>
-
         {/* Three Service Cards Section */}
         <section className="mt-2">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -133,7 +135,6 @@ export default function HomePage({ data }) {
               ))}
           </div>
         </section>
-
         {/* About Rich Bennett */}
         <section className="mx-auto mt-10 max-w-4xl rounded-lg bg-blue-50 p-6">
           <h3 className="mb-4 text-2xl font-semibold">
@@ -146,7 +147,14 @@ export default function HomePage({ data }) {
             {aboutQuote}
           </blockquote>
         </section>
-
+        <section className="mt-10 rounded-lg bg-gray-50 p-6">
+          <h2 className="mb-4 text-2xl font-semibold">
+            {workDirectlyTitle}
+          </h2>
+          <p className="mx-auto max-w-4xl leading-relaxed text-gray-700">
+            {workDirectlyDescription}
+          </p>
+        </section>
         {/* Contact Form Section */}
         <div
           id="contact-form"
@@ -330,15 +338,6 @@ export default function HomePage({ data }) {
           </form>
         </div>
 
-        <section className="mt-10 rounded-lg bg-gray-50 p-6">
-          <h2 className="mb-4 text-2xl font-semibold">
-            {workDirectlyTitle}
-          </h2>
-          <p className="mx-auto max-w-4xl leading-relaxed text-gray-700">
-            {workDirectlyDescription}
-          </p>
-        </section>
-
         <section className="mt-10 max-w-4xl p-6">
           <h2 className="mb-4 text-2xl font-semibold">
             {servingTitle}
@@ -350,7 +349,6 @@ export default function HomePage({ data }) {
             {servingButtonText}
           </Link>
         </section>
-
         <section className="mt-10 rounded-lg bg-gray-50 p-6">
           <h2 className="mb-4 text-2xl font-semibold">
             {propertyManagersTitle}
