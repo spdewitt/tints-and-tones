@@ -95,7 +95,7 @@ export default function HomePage({ data }) {
         <section className="mt-2 flex flex-col items-center text-center">
           <HeroSlider />
 
-          <h1 className="mt-6 text-3xl font-bold">{heroTitle}</h1>
+          <h1 className="mt-6 text-2xl font-bold">{heroTitle}</h1>
           <p className="mt-4 max-w-3xl text-gray-700">
             {heroDescription}
           </p>
