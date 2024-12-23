@@ -96,7 +96,7 @@ export default function HomePage({ data }) {
         <section className="mt-2 flex flex-col items-center text-center">
           <HeroSlider sliderData={heroSlider} />
 
-          <h1 className="mt-3 text-2xl font-bold">{heroTitle}</h1>
+          <h1 className="mt-2 text-2xl font-bold">{heroTitle}</h1>
           <p className="mt-4 max-w-3xl text-gray-700">
             {heroDescription}
           </p>
@@ -120,8 +120,8 @@ export default function HomePage({ data }) {
                       <Image
                         src={service.imageUrl}
                         alt={service.title}
-                        width={400}
-                        height={300}
+                        width={310}
+                        height={200}
                         className="h-48 w-full object-cover transition-transform group-hover:scale-105"
                       />
                     )}
@@ -137,7 +137,7 @@ export default function HomePage({ data }) {
           </div>
         </section>
         {/* About Rich Bennett */}
-        <section className="mx-auto mt-10 max-w-4xl rounded-lg bg-blue-50 p-6">
+        <section className="mx-auto mt-6 max-w-4xl rounded-lg bg-blue-50 p-6">
           {/* Title: Full Width */}
           <h3 className="mb-4 text-2xl font-semibold">
             {aboutTitle}

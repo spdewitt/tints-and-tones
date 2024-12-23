@@ -11,35 +11,8 @@ import cx from "clsx";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { myLoader } from "@/utils/all";
 
-export default function Navbar(props) {
-  const leftmenu = [
-    {
-      label: "Home",
-      href: "/"
-    },
-    {
-      label: "About",
-      href: "/about"
-    },
-    {
-      label: "Interior Painting",
-      href: "/interior-painting"
-    },
-    {
-      label: "Exterior Painting",
-      href: "/exterior-painting"
-    },
-    {
-      label: "Fine Art Commissions",
-      href: "/fine-art"
-    },
-    {
-      label: "Contact",
-      href: "/contact"
-    }
-  ];
-
-  const mobilemenu = [...leftmenu];
+export default function Navbar({ navData }) {
+  const links = navData?.links || [];
 
   return (
     <Container className="homeContainer">
@@ -61,7 +34,7 @@ export default function Navbar(props) {
                   <div className="ml-4 text-sm text-gray-600 dark:text-gray-400 md:block">
                     (812) 604-9289
                     <br />
-                    tintsandtonespainting@gmail.com
+                    rich@tintsandtonespainting.com
                   </div>
                 </div>
                 {/* Mobile Toggle Button */}
@@ -86,9 +59,9 @@ export default function Navbar(props) {
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex md:items-center md:space-x-1">
-                  {leftmenu.map((item, index) => (
+                  {links.map((item, index) => (
                     <Link
-                      href={item.href}
+                      href={item.href || "#"}
                       key={index}
                       className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400">
                       {item.label}
@@ -100,9 +73,9 @@ export default function Navbar(props) {
               {/* Mobile Menu Panel */}
               <Disclosure.Panel className="md:hidden">
                 <div className="space-y-1 pb-3 pt-2">
-                  {mobilemenu.map((item, index) => (
+                  {links.map((item, index) => (
                     <Link
-                      href={item.href}
+                      href={item.href || "#"}
                       key={index}
                       className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300">
                       {item.label}

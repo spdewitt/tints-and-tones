@@ -16,6 +16,7 @@ import {
   searchquery
 } from "./groq";
 import { createClient } from "next-sanity";
+import { navigationQuery } from "@/lib/queries"; // or wherever you store it
 
 if (!projectId) {
   console.error(
@@ -55,6 +56,14 @@ export async function getAllPosts() {
 export async function getSettings() {
   if (client) {
     return (await client.fetch(configQuery)) || [];
+  }
+  return [];
+}
+
+export async function getNavigation() {
+  // Use "client" instead:
+  if (client) {
+    return (await client.fetch(navigationQuery)) || [];
   }
   return [];
 }
